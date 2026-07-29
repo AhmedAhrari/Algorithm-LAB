@@ -227,7 +227,7 @@ class BubbleSortVisualizer:
             y = HEIGHT - 100 - height
             color = self.colors[i] if i < len(self.colors) else COLORS['BAR_DEFAULT']
             pygame.draw.rect(self.screen, color, (x, y, BAR_WIDTH, height))
-            # حاشیه‌ی نازک برای زیبایی
+            
             pygame.draw.rect(self.screen, (40, 40, 50), (x, y, BAR_WIDTH, height), 1)
 
         # Show Static Information
@@ -236,7 +236,7 @@ class BubbleSortVisualizer:
         text_surface = self.font.render(info_text, True, COLORS['TEXT'])
         self.screen.blit(text_surface, (20, 20))
 
-        # نمایش وضعیت
+        # Show Status
         status = "Sorting..." if self.is_sorting and not self.is_paused else \
                  "Paused" if self.is_paused else "Idle"
         status_surface = self.big_font.render(status, True, COLORS['TEXT'])
@@ -251,7 +251,7 @@ class BubbleSortVisualizer:
     def run(self):
         running = True
         while running:
-            # اجرای گام‌ها با سرعت مشخص
+            
             if self.is_sorting and not self.is_paused:
                 steps_to_run = max(1, self.speed // 30)   # Count of Steps per frame
                 for _ in range(steps_to_run):
@@ -263,7 +263,7 @@ class BubbleSortVisualizer:
                 if event.type == pygame.QUIT:
                     running = False
                 elif event.type == pygame.MOUSEBUTTONDOWN:
-                    if event.button == 1:  # کلیک چپ
+                    if event.button == 1:  
                         self.handle_button_click(event.pos)
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
